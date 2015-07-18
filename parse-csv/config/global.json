@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.5.0"
+  },
+  "applications": {
+    "_default": {
+      "link": "parse-csv"
+    },
+    "parse-csv": {
+      "applicationId": "xneOFvqvSSzAeRj2n2E4VcZHUUQLIGEvcrcG28DL",
+      "masterKey": "Vmzjo0axq7duAdpvCY176UqS4bIQqythGNUPEmQV"
+    }
+  }
+}

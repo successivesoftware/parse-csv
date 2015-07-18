@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head> 
+	<meta charset="utf-8"> 
+	<title>Library App</title> 
+	<meta name="description" content="My Parse App"> 
+	<meta name="viewport" content="width=device-width"> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> 
+	<script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.1.min.js"></script> 
+</head>
+
+<body>
+
+<h1>Library App</h1>
+
+<p>This app converts Library information data into CSV format and emails it.</p>
+
+<script type="text/javascript">
+	// Parse.initialize("APPLICATION_ID", "JAVASCRIPT_KEY");
+	Parse.initialize("xneOFvqvSSzAeRj2n2E4VcZHUUQLIGEvcrcG28DL", "YwuTylxb8tpSuDZ7mi95SWEAp9U0xr15uBshFLhE");
+
+	Parse.Cloud.run('getLibrary', {}, {
+	  success: function(results) {
+
+	  	var file64 = window.btoa(results);
+
+	  	Parse.Cloud.run('sendCSV', { attach: file64 }, {
+	  		success: function(results) {
+	  			alert(results);
+	  		},
+	  		error: function(results) {
+	  			alert(results);
+	  		}
+	  	});
+	  	console.log('CSV data:');
+	  	console.log(results);
+	  },
+	  error: function(error) {
+	  	console.log(results);
+	  	alert('Uh oh, something went wrong.');	    
+	  }
+	});
+
+</script>
+
+</body>
+
+</html>
